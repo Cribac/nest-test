@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  mongodb:
+    image: mongo:latest
+    env_file:
+      - .env
+    ports:
+      - 27017:27017
+    volumes:
+      - ./database:/data/db
+    networks:
+      - nesttest-network
+
+  api: 
+    build: .
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - ${APP_PORT}:${APP_PORT}
+    networks:
+      - nesttest-network
+    command: npm run start:dev
+    env_file:
+      - .env
+    depends_on:
+      - mongodb
+
+networks:
+  nesttest-network:
+    driver: bridge
