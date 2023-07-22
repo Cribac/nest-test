@@ -10,7 +10,7 @@ const { MONGODB_HOST, MONGODB_PORT, MONGODB_DATABASE } = process.env
 @Module({
   imports: [
     MongooseModule.forRoot(
-      `mongodb://${MONGODB_HOST}:${MONGODB_PORT}/${MONGODB_DATABASE}}`,
+      `mongodb://${MONGODB_HOST}:${MONGODB_PORT}/${MONGODB_DATABASE}`,
     ),
     UsersModule,
   ],
