@@ -5,6 +5,7 @@ import { AppService } from './app.service'
 import { MongooseModule } from '@nestjs/mongoose'
 import { AuthModule } from './auth/auth.module'
 import { UsersModule } from './users/users.module'
+import { VaultModule } from './vault/vault.module'
 
 // MONOGDB_HOST should be equal to name of mongodb service defined in docker-compose
 const { MONGODB_HOST, MONGODB_PORT, MONGODB_DATABASE } = process.env
@@ -14,6 +15,7 @@ const { MONGODB_HOST, MONGODB_PORT, MONGODB_DATABASE } = process.env
       `mongodb://${MONGODB_HOST}:${MONGODB_PORT}/${MONGODB_DATABASE}`,
     ),
     AuthModule,
+    VaultModule,
     UsersModule,
   ],
   controllers: [AppController],
